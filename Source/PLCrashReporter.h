@@ -135,3 +135,9 @@ typedef struct PLCrashReporterCallbacks {
 - (void) setCrashCallbacks: (PLCrashReporterCallbacks *) callbacks;
 
 @end
+
+@interface PLCrashReporter (PublicMethods)
+
+- (NSData *)logException:(NSException *)exception;
+
+@end

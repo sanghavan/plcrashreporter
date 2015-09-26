@@ -1073,3 +1073,112 @@ cleanup:
 
 
 @end
+
+@implementation PLCrashReporter (PublicMethods)
+
+- (NSData *)logException:(NSException *)exception {
+    return [self logException:exception withThread:pl_mach_thread_self() error:NULL];
+}
+
+- (NSData *)logException:(NSException *)exception withThread:(thread_t)thread error:(NSError **)outError {
+    plcrash_log_writer_t writer;
+    plcrash_async_file_t file;
+    plcrash_error_t err;
+    NSData *data = nil;
+
+    /* Open the output file */
+    NSString *templateStr = [NSTemporaryDirectory() stringByAppendingPathComponent: @"live_crash_report.XXXXXX"];
+    char *path = strdup([templateStr fileSystemRepresentation]);
+
+    int fd = mkstemp(path);
+    if (fd < 0) {
+        plcrash_populate_posix_error(outError, errno, NSLocalizedString(@"Failed to create temporary path", @"Error opening temporary output path"));
+        free(path);
+
+        return nil;
+    }
+
+    /* Initialize the output context */
+    plcrash_log_writer_init(&writer, _applicationIdentifier, _applicationVersion, _applicationMarketingVersion, [self mapToAsyncSymbolicationStrategy: _config.symbolicationStrategy], true);
+    plcrash_log_writer_set_exception(&writer, exception);
+    plcrash_async_file_init(&file, fd, MAX_REPORT_BYTES);
+
+    /* Mock up a SIGTRAP-based signal info */
+    plcrash_log_bsd_signal_info_t bsd_signal_info;
+    plcrash_log_signal_info_t signal_info;
+    bsd_signal_info.signo = SIGTRAP;
+    bsd_signal_info.code = TRAP_TRACE;
+    bsd_signal_info.address = __builtin_return_address(0);
+
+    signal_info.bsd_info = &bsd_signal_info;
+    signal_info.mach_info = NULL;
+
+    /* Instantiate a dynamic loader instance. */
+    plcrash_async_allocator_t *allocator = NULL;
+    plcrash_async_dynloader_t *loader = NULL;
+
+    err = plcrash_async_allocator_create(&allocator, PAGE_SIZE);
+    if (err != PLCRASH_ESUCCESS) {
+        plcrash_populate_error(outError, PLCRashReporterErrorInsufficientMemory, @"An unexpected error occured allocating our page-guarded allocator", nil);
+        goto cleanup;
+    }
+
+    err = plcrash_nasync_dynloader_new(&loader, allocator, mach_task_self());
+    if (err != PLCRASH_ESUCCESS) {
+        plcrash_populate_error(outError, PLCRashReporterErrorNotFound, @"Failed fetch the dyld image info for the current process", nil);
+        goto cleanup;
+    }
+
+    /* Write the crash log using the already-initialized writer */
+    if (thread == pl_mach_thread_self()) {
+        struct plcr_live_report_context ctx = {
+            .writer = &writer,
+            .loader = loader,
+            .file = &file,
+            .info = &signal_info
+        };
+        err = plcrash_async_thread_state_current(plcr_live_report_callback, &ctx);
+    } else {
+        err = plcrash_log_writer_write(&writer, thread, loader, &file, &signal_info, NULL);
+    }
+    plcrash_log_writer_close(&writer);
+
+    /* Flush the data */
+    plcrash_async_file_flush(&file);
+    plcrash_async_file_close(&file);
+
+    /* Check for write failure */
+    if (err != PLCRASH_ESUCCESS) {
+        NSLog(@"Write failed with error %s", plcrash_async_strerror(err));
+        plcrash_populate_error(outError, PLCrashReporterErrorUnknown, @"Failed to write the crash report to disk", nil);
+        data = nil;
+        goto cleanup;
+    }
+
+    data = [NSData dataWithContentsOfFile: [NSString stringWithUTF8String: path]];
+    if (data == nil) {
+        /* This should only happen if our data is deleted out from under us */
+        plcrash_populate_error(outError, PLCrashReporterErrorUnknown, NSLocalizedString(@"Unable to open live crash report for reading", nil), nil);
+        goto cleanup;
+    }
+
+cleanup:
+    /* Remove log exception file
+    [[NSFileManager defaultManager] removeItemAtPath:[NSString stringWithUTF8String:path] error:NULL];
+     */
+
+    /* Finished -- clean up. */
+    plcrash_log_writer_free(&writer);
+    plcrash_async_dynloader_free(loader);
+    plcrash_async_allocator_free(allocator);
+
+    if (unlink(path) != 0) {
+        /* This shouldn't fail, but if it does, there's no use in returning nil */
+        NSLog(@"Failure occured deleting live crash report: %s", strerror(errno));
+    }
+
+    free(path);
+    return data;
+}
+
+@end

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05E731F20EFA1AAB005EDFB7"
-               BuildableName = "libCrashReporter-MacOSX-Static.a"
-               BlueprintName = "CrashReporter-MacOSX-Static"
+               BlueprintIdentifier = "05E731E20EFA1A3E005EDFB7"
+               BuildableName = "plcrashutil"
+               BlueprintName = "plcrashutil"
                ReferencedContainer = "container:CrashReporter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,23 +28,13 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05CD32680EE93DC3000FDE88"
-               BuildableName = "Tests-MacOSX.xctest"
-               BlueprintName = "Tests-MacOSX"
-               ReferencedContainer = "container:CrashReporter.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05E731F20EFA1AAB005EDFB7"
-            BuildableName = "libCrashReporter-MacOSX-Static.a"
-            BlueprintName = "CrashReporter-MacOSX-Static"
+            BlueprintIdentifier = "05E731E20EFA1A3E005EDFB7"
+            BuildableName = "plcrashutil"
+            BlueprintName = "plcrashutil"
             ReferencedContainer = "container:CrashReporter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -61,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05E731F20EFA1AAB005EDFB7"
-            BuildableName = "libCrashReporter-MacOSX-Static.a"
-            BlueprintName = "CrashReporter-MacOSX-Static"
+            BlueprintIdentifier = "05E731E20EFA1A3E005EDFB7"
+            BuildableName = "plcrashutil"
+            BlueprintName = "plcrashutil"
             ReferencedContainer = "container:CrashReporter.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -79,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "05E731F20EFA1AAB005EDFB7"
-            BuildableName = "libCrashReporter-MacOSX-Static.a"
-            BlueprintName = "CrashReporter-MacOSX-Static"
+            BlueprintIdentifier = "05E731E20EFA1A3E005EDFB7"
+            BuildableName = "plcrashutil"
+            BlueprintName = "plcrashutil"
             ReferencedContainer = "container:CrashReporter.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

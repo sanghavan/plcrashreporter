@@ -525,7 +525,7 @@
 		05CD33A40EE94931000FDE88 /* PLCrashSignalHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CD33A20EE94931000FDE88 /* PLCrashSignalHandlerTests.m */; };
 		05CD33A50EE94931000FDE88 /* PLCrashSignalHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CD33A20EE94931000FDE88 /* PLCrashSignalHandlerTests.m */; };
 		05CD34380EEA60BB000FDE88 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* CrashReporter.framework */; };
-		05CD34390EEA60C1000FDE88 /* CrashReporter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* CrashReporter.framework */; };
+		05CD34390EEA60C1000FDE88 /* CrashReporter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* CrashReporter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		05CD36420EF24758000FDE88 /* PLCrashAsync.c in Sources */ = {isa = PBXBuildFile; fileRef = 05CD36410EF24758000FDE88 /* PLCrashAsync.c */; };
 		05CD36430EF24758000FDE88 /* PLCrashAsync.c in Sources */ = {isa = PBXBuildFile; fileRef = 05CD36410EF24758000FDE88 /* PLCrashAsync.c */; };
 		05CD36440EF24758000FDE88 /* PLCrashAsync.c in Sources */ = {isa = PBXBuildFile; fileRef = 05CD36410EF24758000FDE88 /* PLCrashAsync.c */; };
@@ -785,7 +785,7 @@
 		05F40AE00EF73A39008050CF /* PLCrashReporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F40ADD0EF73A39008050CF /* PLCrashReporterTests.m */; };
 		05F40CF20EF7AC0E008050CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05F40CF10EF7AC0E008050CF /* main.m */; };
 		05F40CF50EF7AC82008050CF /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* CrashReporter.framework */; };
-		05F40CFA0EF7AC96008050CF /* CrashReporter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* CrashReporter.framework */; };
+		05F40CFA0EF7AC96008050CF /* CrashReporter.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* CrashReporter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		05F40F840EF850FC008050CF /* protobuf-c.c in Sources */ = {isa = PBXBuildFile; fileRef = 05F40F830EF850FC008050CF /* protobuf-c.c */; };
 		05F40F850EF850FC008050CF /* protobuf-c.c in Sources */ = {isa = PBXBuildFile; fileRef = 05F40F830EF850FC008050CF /* protobuf-c.c */; };
 		05F40F860EF850FC008050CF /* protobuf-c.c in Sources */ = {isa = PBXBuildFile; fileRef = 05F40F830EF850FC008050CF /* protobuf-c.c */; };
@@ -2863,7 +2863,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = NO;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					05CD33230EE94439000FDE88 = {
 						TestTargetID = 052A45CE136353FB00987004;
@@ -3855,7 +3855,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				EFFECTIVE_PLATFORM_NAME = "-MacOSX";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3877,7 +3876,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EFFECTIVE_PLATFORM_NAME = "-MacOSX";
@@ -3899,7 +3897,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(PL_ARM_ARCHS)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3918,6 +3915,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc822identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 			};
@@ -3927,7 +3925,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(PL_ARM_ARCHS)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -3945,6 +3942,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc822identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;
@@ -3955,7 +3953,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3974,6 +3971,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc822identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphonesimulator;
 			};
@@ -3983,7 +3981,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -4001,6 +3998,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc822identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphonesimulator;
 				ZERO_LINK = NO;
@@ -4028,6 +4026,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = CrashReporter;
 				SKIP_INSTALL = YES;
 			};
@@ -4052,6 +4051,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = CrashReporter;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
@@ -4084,7 +4084,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(PL_ARM_ARCHS)";
 				COPY_PHASE_STRIP = NO;
 				EXPORTED_SYMBOLS_FILE = Resources/CrashReporter.exp;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -4104,7 +4103,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(PL_ARM_ARCHS)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXPORTED_SYMBOLS_FILE = Resources/CrashReporter.exp;
@@ -4124,7 +4122,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				EXPORTED_SYMBOLS_FILE = Resources/CrashReporter.exp;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -4143,7 +4140,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXPORTED_SYMBOLS_FILE = Resources/CrashReporter.exp;
@@ -4183,7 +4179,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -4199,6 +4194,7 @@
 				INFOPLIST_FILE = "Resources/Tests-MacOSX-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Tests-MacOSX";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -4214,7 +4210,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
@@ -4229,6 +4224,7 @@
 				INFOPLIST_FILE = "Resources/Tests-MacOSX-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Tests-MacOSX";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -4244,7 +4240,6 @@
 		05CD32AC0EE94063000FDE88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -4265,6 +4260,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Tests-iOS-Simulator";
 				SDKROOT = iphonesimulator;
 				SKIP_INSTALL = YES;
@@ -4279,7 +4275,6 @@
 		05CD32AD0EE94063000FDE88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -4299,6 +4294,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Tests-iOS-Simulator";
 				SDKROOT = iphonesimulator;
 				SKIP_INSTALL = YES;
@@ -4314,7 +4310,6 @@
 		05CD33270EE9443A000FDE88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(PL_ARM_ARCHS)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4336,6 +4331,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Tests-iOS-Device";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4351,7 +4347,6 @@
 		05CD33280EE9443A000FDE88 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(PL_ARM_ARCHS)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -4372,6 +4367,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Tests-iOS-Device";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -4432,7 +4428,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				EFFECTIVE_PLATFORM_NAME = "-MacOSX";
@@ -4461,7 +4456,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -4490,7 +4484,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				EFFECTIVE_PLATFORM_NAME = "-MacOSX";
@@ -4507,6 +4500,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc822identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
 				SKIP_INSTALL = YES;
@@ -4517,7 +4511,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -4533,6 +4526,7 @@
 					"-framework",
 					AppKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:rfc822identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
 				SKIP_INSTALL = YES;
@@ -4544,7 +4538,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -4563,6 +4556,7 @@
 					"$(inherited)",
 					"-DPLCF_MIN_MACOSX_SDK=$(PL_MIN_MACOSX_SDK)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = CrashReporter;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -4574,7 +4568,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -4590,6 +4583,7 @@
 					"$(inherited)",
 					"-DPLCF_MIN_MACOSX_SDK=$(PL_MIN_MACOSX_SDK)",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "coop.plausible.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = CrashReporter;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -4603,6 +4597,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CURRENT_PROJECT_VERSION = 1.2.1;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
@@ -4614,7 +4609,7 @@
 				GCC_WARN_SHADOW = YES;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Dependencies/protobuf-2.0.3/include\"";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"$(inherited)",
 					"-D$(PL_BUILD_CONFIG_FLAG)=1",
